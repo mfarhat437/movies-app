@@ -1,0 +1,64 @@
+openapi: 3.0.1
+info:
+  title: Movies
+  description: Movies apis
+  version: 0.0.0
+servers:
+  - url: "https://localhost:8080/"
+
+paths:
+  /:
+    get:
+      tags:
+        - Public
+      summary: Get App version
+      responses:
+        200:
+          $ref: "#/components/responses/version"
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+  responses:
+    version:
+      description: App Version.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/versionResponse"
+    messages:
+      description: messages.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/messageSchema"
+
+  schemas:
+    errorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+        stack:
+          type: string
+    versionResponse:
+      type: object
+      properties:
+        version:
+          type: "string"
+          example: "0.0.0"
+        name:
+          type: "string"
+          example: "Api"
+
+    messageSchema:
+      type: object
+      properties:
+        message:
+          type: "string"

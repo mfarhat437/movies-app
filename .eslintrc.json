@@ -1,0 +1,83 @@
+{
+    "env": {
+        "commonjs": true,
+        "es2021": true,
+        "node": true,
+        "mocha": true
+    },
+    // "extends": "airbnb-base",
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    
+    "rules": {
+        "radix": [
+            "error",
+            "as-needed"
+        ],
+        "no-underscore-dangle": [
+            "error",
+            {
+                "enforceInMethodNames": false,
+                "allowAfterThis": true,
+                "allow": [
+                    "_id",
+                    "resource_" //realted to google
+                ]
+            }
+        ],
+        "no-const-assign": ["error"],
+        "no-console": ["warn"],
+        "no-dupe-class-members": ["error"],
+
+        "no-dupe-else-if": ["error"],
+
+        "no-dupe-keys": ["error"],
+
+        "no-fallthrough": ["error"],
+
+        "function-call-argument-newline": ["error","consistent"],
+
+        "no-unreachable": ["error"],
+
+        "no-unused-private-class-members": ["warn"],
+
+        "no-use-before-define": ["error"],
+        // "camelcase":["error",{
+
+        // }],
+        "complexity":["error",10],
+        "default-case":["error"],
+        "eqeqeq":["error"],
+        "max-lines-per-function":["error",25],
+        "max-lines":["error",1000],
+        "max-nested-callbacks":["error",2],
+        "no-return-await":["warn"],
+        "require-await":["warn"],
+        "no-unused-vars":["warn"],
+        "id-length": [
+            "error",
+            {
+                "min": 3,
+                "exceptions":["_","id","as","i","db","to","fs","is","up"]
+            }
+        ]
+    },
+
+    "overrides": [
+        {
+            "files": [
+                "*.test.js",
+                "*.spec.js"
+            ],
+            "rules": {
+                "max-lines-per-function": "off"
+            }
+        },{
+            "files":["app.js"],
+            "rules": {
+                "no-console": "off"
+            }
+        }
+    ]
+}
