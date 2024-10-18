@@ -1,6 +1,7 @@
 module.exports = {
   port: process.env.SERVICE_PORT,
   NODE_ENV: 'local',
+  syncDate:'0 0 * * *',
   storage: {
   },
   app: {

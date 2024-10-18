@@ -15,8 +15,8 @@ class Server {
   async preInitialize() {
     try {
       await mongo.initialize(this.config.db);
-      await require('./src/services/core/MoviesSyncService.js').fetchMovies()
       await this.migrate()
+      await require('./src/services/core/JobsService.js').initialize()
     } catch (err) {
       console.log("err:", err);
       process.exit(1);

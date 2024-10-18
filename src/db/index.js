@@ -42,6 +42,7 @@ class Database {
   async _registerModels() {
     require('./models/migration')
     require('./models/movies')
+    require('./models/Configuration')
 
   }
 
