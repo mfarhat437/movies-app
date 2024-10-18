@@ -41,6 +41,7 @@ class Database {
   // TODO: this requires need to be refactored
   async _registerModels() {
     require('./models/migration')
+    require('./models/movies')
 
   }
 

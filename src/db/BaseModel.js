@@ -97,7 +97,7 @@ class BaseModel {
   }
   async createMany( data, options, params) {
     const queryBuilder = this._buildQuery(this.model.insertMany( data, options), params);
-    return queryBuilder.exec();
+    return 
   }
 
   // eslint-disable-next-line max-lines-per-function
