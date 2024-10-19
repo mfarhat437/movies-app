@@ -7,6 +7,7 @@ module.exports = {
     pagination: Joi.string().valid('true', 'false'),
     limit: Joi.number().min(1),
     page: Joi.number().min(1),
+    genre: Joi.number().min(1),
 
   }).options({ stripUnknown: true }),
   dateFilterQuerySchema: Joi.object().keys({

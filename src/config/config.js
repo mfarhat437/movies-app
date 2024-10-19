@@ -6,10 +6,10 @@ module.exports = {
   },
   app: {
     version: process.env.ADMIN_BE_APP_VERSION,
-    name: 'Sales',
+    name: 'Movies',
   },
   db: {
-    url: process.env.ADMIN_BE_DB_URI
+    url: process.env.MOVIES_DB_URI
   },
   auth: {
     local: {

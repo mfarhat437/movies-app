@@ -1,5 +1,5 @@
 const BaseService=require('../BaseService')
-const MoviesSyncService=require('./MoviesSyncService')
+const SyncService=require('./SyncService')
 const config=require('../../config/config')
 class JobsService extends BaseService {
     constructor(){
@@ -10,7 +10,7 @@ class JobsService extends BaseService {
     initialize(){
         this.job.schedule(config.syncDate, async () => {
             console.log('Running the movie sync job at midnight');
-            await MoviesSyncService.syncMovies();
+            await SyncService.syncMovies();
           });
     }
 }

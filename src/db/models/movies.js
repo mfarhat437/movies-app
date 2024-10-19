@@ -12,7 +12,7 @@ const MovieSchema = new Schema({
   vote_average:{type:Number,default:0},
   vote_count:{type:Number,default:0},
   last_sync:{type:Number,default:0},
-
+  vote_sum:{type:Number,default:0}
 });
 MovieSchema.index({ id: 1 });
 

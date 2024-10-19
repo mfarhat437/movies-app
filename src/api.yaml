@@ -15,6 +15,107 @@ paths:
       responses:
         200:
           $ref: "#/components/responses/version"
+  /movies:
+    post:
+      tags:
+        - Movies
+      summary: create movie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createMovieSchema"
+      responses:
+        200:
+          $ref: "#/components/responses/createMovieSchema"
+    get:
+      tags:
+        - Movies
+      summary: list movies
+      parameters:
+        - name: genre
+          in: query
+          schema:
+            type: number
+          required: false
+          description: "Disable or enable pagination"
+        - name: pagination
+          in: query
+          schema:
+            type: boolean
+          required: false
+          description: "Disable or enable pagination"
+        - name: limit
+          in: query
+          schema:
+            type: number
+          description: "Items limit per page"
+        - name: page
+          in: query
+          schema:
+            type: number
+          description: "Page number"
+      responses:
+        200:
+          $ref: "#/components/responses/moviesListRes"
+  /movies/{movieId}:
+    put:
+      tags:
+        - Movies
+      summary: update movie
+      parameters:
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: "id of the movie"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createMovieSchema"
+      responses:
+        200:
+          $ref: "#/components/responses/messages"
+    delete:
+      tags:
+        - Movies
+      summary: Delete movie
+      parameters:
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: "id of the movie"
+      responses:
+        200:
+          $ref: "#/components/responses/messages"
+  /movies/{movieId}/rates:
+    post:
+      tags:
+        - Rating
+      summary: rate a movie
+      parameters:
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: "id of the movie"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/rateMovieSchema"
+      responses:
+        200:
+          $ref: "#/components/responses/messages"
+
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -34,6 +135,12 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/messageSchema"
+    moviesListRes:         
+        description: movies.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/moviesListSchema"
 
   schemas:
     errorResponse:
@@ -62,3 +169,48 @@ components:
       properties:
         message:
           type: "string"
+    createMovieSchema:
+      type: object
+      properties:
+        title:
+          type: "string"
+          require: true
+        overview:
+          type: "string"
+        genre_ids:
+          type: "array"
+          items:
+            type: "number"
+
+    moviesListSchema:
+      type: array
+      items:
+        type: "object"
+        properties:
+          _id:
+            type: "string"
+          title:
+            type: "string"
+          overview:
+            type: "string"
+          genre_ids:
+            type: "array"
+            items:
+              type : "string"
+          vote_average:
+            type: "number"
+          vote_count:
+            type: "number"
+          vote_sum:
+            type: "number"
+          created_at:
+            type: "string"
+          updated_at:
+            type: "string"
+    rateMovieSchema:
+      type: object
+      properties:
+          rate:
+            type: "number"
+          message:
+            type: "string"

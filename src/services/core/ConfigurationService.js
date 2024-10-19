@@ -1,6 +1,7 @@
 const BaseService=require('../BaseService')
 const {Configuration}=require('../../db/models/index')
 class ConfigurationService extends BaseService {
+
     async initialize(){
         return Configuration.create({})
     }
@@ -9,7 +10,6 @@ class ConfigurationService extends BaseService {
     }
     async update(data){
         return Configuration.updateOne({},data)
-
     }
 
 }

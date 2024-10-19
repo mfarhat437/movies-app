@@ -4,7 +4,7 @@ const axios = require('axios');
 const {PATHS}=require('../../config/constants/paths')
 const ConfigurationService=require('./ConfigurationService')
 const {Movie}=require('../../db/models/index')
-class MoviesSyncService extends BaseService {
+class SyncService extends BaseService {
     constructor(){
         super()
         this.apiKey=config.TMDB_config.apiKey
@@ -47,4 +47,4 @@ class MoviesSyncService extends BaseService {
         return {message:"Sync Done Successfully"}  
      } 
 }
-module.exports= new MoviesSyncService()
+module.exports= new SyncService()
