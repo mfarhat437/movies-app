@@ -3,14 +3,12 @@ const {Movie}=require('../../db/models/index')
 class MoviesService extends BaseService {
      async listMovies ( filters, pagination= false)  {
         const query={}
-        console.log(filters)
         const params={sort:{created_at:-1}}
         let paginate = pagination
         if (filters.pagination) 
           paginate = this.utils.parseBoolean(filters.pagination);
         if(filters.genre)
           query['genre_ids']={$in:[parseInt(filters.genre)]}
-        console.log(query)
         return Movie.getAll(query, params, paginate);
       };
     async create(data){
