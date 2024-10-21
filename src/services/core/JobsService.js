@@ -9,6 +9,7 @@ class JobsService extends BaseService {
     }
     initialize(){
         this.job.schedule(config.syncDate, async () => {
+            //TODO add job db to track running job
             console.log('Running the movie sync job at midnight');
             await SyncService.syncMovies();
           });

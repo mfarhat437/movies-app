@@ -1,0 +1,13 @@
+version: '3'
+services:
+  # Node.js app
+  app:
+    build: .
+    ports:
+      - "8080:8080" # Maps port 3000 on host to port 3000 in the container
+    environment:
+      - MOVIES_DB_URI=$MOVIES_DB_URI
+      - TMDB_API_KEY=$TMDB_API_KEY
+    volumes:
+      - .:/app
+      - /app/node_modules

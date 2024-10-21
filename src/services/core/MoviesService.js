@@ -7,7 +7,7 @@ class MoviesService extends BaseService {
         let paginate = pagination
         if (filters.pagination) 
           paginate = this.utils.parseBoolean(filters.pagination);
-        if(filters.genre)
+        if(filters.genre) // TODO check genreId in TMDB
           query['genre_ids']={$in:[parseInt(filters.genre)]}
         return Movie.getAll(query, params, paginate);
       };
